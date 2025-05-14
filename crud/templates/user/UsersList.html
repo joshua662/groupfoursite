@@ -1,0 +1,51 @@
+<!--
+  This web application is fully responsive and works properly on all screen sizes (desktop, tablet, mobile).
+  The sidebar and all content remain fully functional and visually consistent on desktop computers, tablets, and mobile devices.
+-->
+
+{% extends "layout/base.html" %}
+
+{% block title %} Users List {% endblock title %}
+
+{% block content %}
+
+{% include "include/sidebar.html" %}
+{% include "include/ToastMessage.html" %}
+
+<div class="p-12 sm:ml-50 mt-16 md:mt-15">
+    <div class="relative overflow-x-auto rounded-md shadow-sm">
+        <table class="w-full">
+            <thead class="text-xs text-left text-white bg-blue-500">
+                <tr>
+                    <th class="px-6 py-3">Full Name</th>
+                    <th class="px-6 py-3">Gender</th>
+                    <th class="px-6 py-3">Birth Date</th>
+                    <th class="px-6 py-3">Address</th>
+                    <th class="px-6 py-3">Contact Number</th>
+                    <th class="px-6 py-3">Email</th>
+                    <th class="px-6 py-3">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="text-xs text-black">
+                {% for user in users %}
+                    <tr class='hover:bg-gray-100 border-gray-200'>
+                        <td class="px-6 py-3">{{ user.full_name }}</td>
+                        <td class="px-6 py-3">{{ user.gender.gender }}</td>
+                        <td class="px-6 py-3">{{ user.birth_date }}</td>
+                        <td class="px-6 py-3">{{ user.address }}</td>
+                        <td class="px-6 py-3">{{ user.contact_number }}</td>
+                        <td class="px-6 py-3">{{ user.email }}</td>
+                        <td class="px-6 py-3">
+                            <div class="inline-flex shadow-sm">
+                                <a href="/user/edit/{{ user.user_id }}" class="bg-green-600 px-3 py-2.5 font-medium text-white rounded-sm hover:bg-green-700 hover:outline-none">Edit</a>
+                                <a href="/user/delete/{{ user.user_id }}" class="bg-red-600 px-3 py-2.5 font-medium text-white rounded-sm hover:bg-red-700 hover:outline-none">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %} 
