@@ -31,7 +31,7 @@ def login_view(request):
     except Exception as e:
         return HttpResponse(f'Error occurred during login: {e}')
 
-# @login_required_custom
+@login_required_custom
 def gender_list(request):
     try:
         genderObj = Gender.objects.all()
@@ -44,7 +44,7 @@ def gender_list(request):
     except Exception as e:
         return HttpResponse(f'Error occured during load genders: {e}')
 
-# @login_required_custom
+@login_required_custom
 def add_gender(request):
     try:
         if request.method == 'POST':
@@ -58,7 +58,7 @@ def add_gender(request):
     except Exception as e:
         return HttpResponse(f'Error occured during add gender: {e}')
 
-# @login_required_custom    
+@login_required_custom    
 def edit_gender(request, genderId):
     try:
         if request.method == 'POST':
@@ -88,7 +88,7 @@ def edit_gender(request, genderId):
     except Exception as e:
         return HttpResponse(f'Error occured during edit gender: {e}')
     
-# @login_required_custom    
+@login_required_custom    
 def delete_gender(request, genderId):
     try:
         if request.method == 'POST':
@@ -108,7 +108,7 @@ def delete_gender(request, genderId):
     except Exception as e:
         return HttpResponse(f'Error occured during delete gender: {e}')
 
-# @login_required_custom
+@login_required_custom
 def user_list(request):
     try:
         userObj = Users.objects.select_related('gender')
