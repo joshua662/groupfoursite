@@ -9,18 +9,18 @@ Gender List
 {% include "include/Sidebar.html" %}
 {% include "include/ToastMessage.html" %}
 
-<div class="p-12 sm:ml-50 mt-16 md:mt-15">
+<div class="p-2 sm:ml-64 mt-16 md:mt-14">
     <div class="relative overflow-x-auto rounded-md shadow-sm">
         <table class="w-full">
-            <thead class="text-xs text-left text-black bg-orange-600">
+            <thead class="text-xs text-left text-black bg-gray-600">
                 <tr>
                     <th class="px-8 py-3 text-center">Gender</th> <!-- Adjusted padding -->
                     <th class="px-8 py-3 text-center">Actions</th> <!-- Adjusted padding -->
                 </tr>
             </thead>
-            <tbody class="text-sm text-black">
+            <tbody class="text-sm text-black bg-slate-400">
                 {% for gender in genders %}
-                    <tr class='hover:bg-gray-200 border-gray-200'>
+                    <tr class='hover:bg-gray-400 border-gray-400'>
                         <td class="px-8 py-3 text-center">{{ gender.gender }}</td> <!-- Adjusted padding and alignment -->
                         <td class="px-8 py-3 text-center">
                             <div class="inline-flex shadow-sm">

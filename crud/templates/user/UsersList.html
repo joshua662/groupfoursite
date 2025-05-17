@@ -1,8 +1,4 @@
-<!--
-  This web application is fully responsive and works properly on all screen sizes (desktop, tablet, mobile).
-  The sidebar and all content remain fully functional and visually consistent on desktop computers, tablets, and mobile devices.
--->
-
+<!-- filepath: c:\xampp\htdocs\groupfoursite\crud\templates\user\UsersList.html -->
 {% extends "layout/base.html" %}
 
 {% block title %} Users List {% endblock title %}
@@ -12,7 +8,22 @@
 {% include "include/sidebar.html" %}
 {% include "include/ToastMessage.html" %}
 
-<div class="p-12 sm:ml-50 mt-16 md:mt-15">
+<div class="p-2 sm:ml-64 mt-16 md:mt-14">
+        <!-- Search form at the bottom right -->
+    <div class="flex justify-end mb-4">
+        <form class="max-w-xs w-full">
+            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                </div>
+                <input type="search" id="default-search" class="block w-full p-2 ps-10 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." />
+                <button type="submit" class="text-white absolute end-2.5 bottom-1 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+            </div>
+        </form>
+    </div>
     <div class="relative overflow-x-auto rounded-md shadow-sm">
         <table class="w-full">
             <thead class="text-xs text-left text-white bg-blue-500">
@@ -46,6 +57,14 @@
             </tbody>
         </table>
     </div>
+    <div class="flex justify-center mt-6">
+      <!-- Previous Button -->
+      <a href="#" class="flex items-center justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+        Previous
+      </a>
+      <a href="#" class="flex items-center justify-end px-4 h-10 ms-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white text-right">
+        Next
+      </a>
+    </div>
 </div>
-
-{% endblock content %} 
+{% endblock content %}
