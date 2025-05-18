@@ -35,4 +35,15 @@ Gender List
     </div>
 </div>
 
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const checkbox = document.getElementById("show-password");
+            const passwordField = document.getElementById("password");
+
+            checkbox.addEventListener("change", function () {
+                passwordField.type = this.checked ? "text" : "password";
+            });
+        });
+    </script>
+
 {% endblock content %}
