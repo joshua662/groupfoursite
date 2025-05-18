@@ -32,7 +32,11 @@ def login_view(request):
         return render(request, 'layout/Login.html')
     except Exception as e:
         return HttpResponse(f'Error occurred during login: {e}')
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 389dfe354bc0279e8c07cab4f474dfffb164fd72
 @login_required_custom
 def gender_list(request):
     try:
@@ -46,6 +50,10 @@ def gender_list(request):
     except Exception as e:
         return HttpResponse(f'Error occured during load genders: {e}')
 
+<<<<<<< HEAD
+=======
+@login_required_custom
+>>>>>>> 389dfe354bc0279e8c07cab4f474dfffb164fd72
 def add_gender(request):
     try:
         if request.method == 'POST':
@@ -59,6 +67,10 @@ def add_gender(request):
     except Exception as e:
         return HttpResponse(f'Error occured during add gender: {e}')
 
+<<<<<<< HEAD
+=======
+@login_required_custom    
+>>>>>>> 389dfe354bc0279e8c07cab4f474dfffb164fd72
 def edit_gender(request, genderId):
     try:
         if request.method == 'POST':
@@ -88,6 +100,10 @@ def edit_gender(request, genderId):
     except Exception as e:
         return HttpResponse(f'Error occured during edit gender: {e}')
     
+<<<<<<< HEAD
+=======
+@login_required_custom    
+>>>>>>> 389dfe354bc0279e8c07cab4f474dfffb164fd72
 def delete_gender(request, genderId):
     try:
         if request.method == 'POST':
