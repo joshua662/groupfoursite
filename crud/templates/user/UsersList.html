@@ -56,10 +56,10 @@
             <a href="?q={{ request.GET.q }}&page={{ users.previous_page_number }}" class="px-3 py-1 bg-gray-200 rounded">Previous</a>
         {% endif %}
 
-        <span class="px-3 py-1 bg-gray-300 rounded">Page {{ users.number }} of {{ users.paginator.num_pages }}</span>
 
         {% if users.has_next %}
             <a href="?q={{ request.GET.q }}&page={{ users.next_page_number }}" class="px-3 py-1 bg-gray-200 rounded">Next</a>
+                    <span class="px-3 py-1 bg-gray-300 rounded">Page {{ users.number }} of {{ users.paginator.num_pages }}</span>
             <a href="?q={{ request.GET.q }}&page={{ users.paginator.num_pages }}" class="px-3 py-1 bg-gray-200 rounded">Last</a>
         {% endif %}
     </div>

@@ -14,16 +14,35 @@
           <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Lorem Ipsum</span>
         </a>
       </div>
-      <a href="{% url 'logout' %}" class="flex items-center p-2 text-blue-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group">
-         <svg class="w-5 h-5 text-blue-600 transition duration-75 group-hover:text-blue-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h4a2 2 0 012 2v1"/>
-         </svg>
-         <span class="flex-1 ms-3 whitespace-nowrap">Log out</span>
-      </a>
+<div class="flex justify-center items-center p-2">
+  <button type="button" id="openLogoutModal" class="flex items-center text-blue-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group px-2 py-1">
+    <svg class="w-5 h-5 text-blue-600 transition duration-75 group-hover:text-blue-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h4a2 2 012 2v1"/>
+    </svg>
+    <span class="flex-1 ms-3 whitespace-nowrap">Log out</span>
+  </button>
+</div>
+
     </div>
   </div>
 </nav>
-<!-- Sidebar -->
+
+{% include "include/ToastMessage.html" %}
+
+
+<div id="logoutModal" class="fixed inset-0 bg-black bg-opacity-40 tems-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm">
+        <h2 class="text-center text-lg font-semibold mb-4">Are you sure you want to logout?</h2>
+        <div class="flex justify-end gap-2">
+            <button type="button" id="closeLogoutModal" class="bg-gray-400 hover:bg-gray-500 text-white px-3 py-2 rounded">Cancel</button>
+            <form action="{% url 'logout' %}" method="post" class="inline">
+                {% csrf_token %}
+                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded">Logout</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
    <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
       <ul class="space-y-2 font-medium">
@@ -64,7 +83,6 @@
    </div>
 </aside>
 
-
 <script>
   const sidebarToggle = document.getElementById('sidebar-toggle');
   const sidebar = document.getElementById('logo-sidebar');
@@ -76,8 +94,14 @@
   const sidebarElements = sidebar.querySelectorAll('a, button');
   sidebarElements.forEach(element => {
     element.addEventListener('click', (e) => {
-      // Prevent the sidebar from toggling off
       e.stopPropagation();
     });
   });
+
+  document.getElementById('openLogoutModal').onclick = function() {
+      document.getElementById('logoutModal').classList.remove('hidden');
+  };
+  document.getElementById('closeLogoutModal').onclick = function() {
+      document.getElementById('logoutModal').classList.add('hidden');
+  };
 </script>

@@ -7,9 +7,9 @@
 {% block content %}
 
 {% include "include/sidebar.html" %}
-{% include "include/ToastMessage.html" %}
+{% include "include/ToastMessage.html" %}  
 
-<div class="p-2 sm:ml-64 mt-16 md:mt-14">
+<div class="p-4 sm:ml-64 mt-16 md:mt-14">
     <div class="mx-auto">
         <form action="/user/add/" method="post">
             {% csrf_token %}

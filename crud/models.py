@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 
-class Gender(models.Model):
+class Genders(models.Model):
     class Meta:
         db_table = 'tbl_genders'
 
@@ -18,7 +18,7 @@ class Users(models.Model):
     
     user_id = models.BigAutoField(primary_key=True, blank=False)
     full_name = models.CharField(max_length=55, blank=False)
-    gender = models.ForeignKey(Gender, on_delete=models.CASCADE)
+    gender = models.ForeignKey(Genders, on_delete=models.CASCADE)
     birth_date = models.DateField(blank=False)  
     address = models.CharField(max_length=55, blank=False)  
     contact_number = models.CharField(max_length=55, blank=False)
