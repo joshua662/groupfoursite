@@ -1,12 +1,30 @@
 {% load static %}
 
 {% if messages %}
-<div class="fixed top-28 left-1/2 transform -translate-x-1/2 z-50"> <!-- Adjusted top value -->
+<div class="fixed top-28 left-1/2 transform -translate-x-1/2 z-50">
     {% for message in messages %}
-    <div id="toast-success" class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-sm border border-gray-200" role="alert">
-        <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-green-600 bg-green-200">
+    <div id="toast-success" class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-sm border
+        {% if message.tags == 'success' %}
+            border-green-400
+        {% elif message.tags == 'error' or message.tags == 'danger' %}
+            border-red-400
+        {% else %}
+            border-gray-200
+        {% endif %}" role="alert">
+        <div class="inline-flex items-center justify-center shrink-0 w-8 h-8
+            {% if message.tags == 'success' %}
+                text-green-600 bg-green-200
+            {% elif message.tags == 'error' or message.tags == 'danger' %}
+                text-red-600 bg-red-200
+            {% else %}
+                text-gray-600 bg-gray-200
+            {% endif %}">
             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                {% if message.tags == 'success' %}
                 <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                {% else %}
+                <path d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm1-5a1 1 0 1 1-2 0v-2a1 1 0 1 1 2 0v2Zm-1-8a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                {% endif %}
             </svg>
             <span class="sr-only">Check icon</span>
         </div>

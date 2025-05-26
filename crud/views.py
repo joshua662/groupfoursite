@@ -12,29 +12,29 @@ from django.core.paginator import Paginator
 def login_view(request):
     try:
         if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.grt('password')
-        
-        try:
-            user = Users.objects.get(username=username)
-            if check_password(password, user.password):
-                request.session('userId') = user.user_id
-                request.sesion('username') = user.username
-                request.sesion('is_auntheticated') = True
-                
-                messages.success(request, f'Welcome {user.full_name}|')
-                return redirect('/gender/list')
-            else:
-                messages.error(request, 'Invalid username or password.')
+            email = request.POST.get('email')  # Changed from username to email
+            password = request.POST.get('password')
+            
+            try:
+                user = Users.objects.get(email=email)  # Changed to look up by email
+                if check_password(password, user.password):
+                    request.session['userId'] = user.user_id
+                    request.session['username'] = user.username
+                    request.session['is_authenticated'] = True
+                    
+                    messages.success(request, f'Welcome {user.full_name}!')
+                    return redirect('/gender/list')
+                else:
+                    messages.error(request, 'Invalid email or password.')
+                    return redirect('/login/?error=1')
+            except Users.DoesNotExist:
+                messages.error(request, 'Invalid email or password.')
                 return redirect('/login/?error=1')
-        except user.DoesNotexist:
-            messages.error(request, 'Invalid username or password.')
-            return redirect('/login/?error=1')
-        
+            
         else:
             return render(request, 'layout/Login.html')
     except Exception as e:
-        messages.error(request, f'An error occured: {str(e)}')
+        messages.error(request, f'An error occurred: {str(e)}')
         return redirect('/login/?error=1')
 
 @login_required_custom
